@@ -8,11 +8,10 @@ RUN apt-get update && \
     fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst ttf-freefont \
     ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils
 
-RUN mkdir -p /app && chown -R node:node /app
+RUN mkdir -p /app
 
 WORKDIR /app
 
-USER node
 RUN yarn global add puppeteer@1.9 && yarn cache clean
 
-ENV NODE_PATH="${NODE_PATH}:/home/node/.config/yarn/global/node_modules"
+ENV NODE_PATH="${NODE_PATH}:/usr/local/share/.config/yarn/global/node_modules"
