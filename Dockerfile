@@ -9,11 +9,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 
-RUN mkdir -p /app && chown -R node:node /app
+RUN mkdir /app
 WORKDIR /app
-
-USER node
 
 RUN yarn global add puppeteer@1.18.1 && yarn cache clean
 
-ENV NODE_PATH="${NODE_PATH}:/home/node/.config/yarn/global/node_modules"
+ENV NODE_PATH="${NODE_PATH}:/usr/local/share/.config/yarn/global/node_modules"
